@@ -1,8 +1,8 @@
 # Logstash Pipelines
 
-Logstash pipline configurations.
+Logstash pipeline configurations.
 
-## LogicMonitor ServiceNow
+## LogicMonitor to ServiceNow
 
 The `logcimonitor-servicenow.conf` pipeline accepts events from [LogicMonitor](https://www.logicmonitor.com/) and sends them to the [ServiceNow](https://docs.servicenow.com/csh?topicname=c_EM.html&version=latest) Event Management [web service API](https://docs.servicenow.com/csh?topicname=send-events-via-web-service.html&version=latest).
 
@@ -44,3 +44,7 @@ Create a [Custom HTTP Delivery](https://www.logicmonitor.com/support/alerts/inte
 > To avoid issues with parsing certain time zones the `GMT (No daylight saving)` or `UTC` zone should be set under [Account Information](https://www.logicmonitor.com/support/settings/account-information/portal-settings) in LogicMonitor. LogicMonitor uses an [abbreviated time zone](https://en.wikipedia.org/wiki/List_of_time_zone_abbreviations) string for the [tokens](https://www.logicmonitor.com/support/logicmodules/about-logicmodules/tokens-available-in-datasource-alert-messages) used in the alert data. Common abbreviated zones such as `BST` and `CST` are not unique.
 >
 > If the date cannot be parsed from the LogicMonitor event, the time it was received by the pipeline will be used.
+
+### Testing
+
+If a test environment is required, one simple way is with an Azure Container App running a Logstash container. See [this repository](https://github.com/chrisred/az-logstash-example/tree/master/logicmonitor-servicenow) for a deployment template and instructions.
